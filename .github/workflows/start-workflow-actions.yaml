@@ -5,7 +5,7 @@ on:
     branches:
       - master
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   test:
@@ -19,7 +19,11 @@ jobs:
         with:
           java-version: 11
       - name: Run Tests
-        run: bash ./gradlew test --stacktrace  
+        run: bash ./gradlew test --stacktrace
+      - name: Test
+        run: echo $Candy_Secure
+        env:
+          Candy_Secure: ${{ secrets.SECRET_ONE }}
   apk:
     name: Generate APK
     needs: test
@@ -37,4 +41,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: apk
-          path: app/build/outputs/apk/debug/app-debug.apk 
+          path: app/build/outputs/apk/debug/app-debug.apk
