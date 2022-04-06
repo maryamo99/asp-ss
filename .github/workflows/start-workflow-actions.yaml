@@ -22,7 +22,7 @@ jobs:
         run: bash ./gradlew test --stacktrace
       - name: Test
         run: |
-          if["$Candy_Secure" == "this is a secret"]
+          if ["$Candy_Secure" == "this is a secret"]
           then 
             echo "Got secret"
           fi
