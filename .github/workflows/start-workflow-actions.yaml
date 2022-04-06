@@ -21,7 +21,11 @@ jobs:
       - name: Run Tests
         run: bash ./gradlew test --stacktrace
       - name: Test
-        run: echo $Candy_Secure
+        run: |
+          if["$Candy_Secure" == "this is a secret"]
+          then 
+            echo "Got secret"
+          fi
         env:
           Candy_Secure: ${{ secrets.SECRET_ONE }}
   apk:
